@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Service = ({ service }) => {
-  const {
-    instructorName,
-    serviceImg,
-    title,
-    instructorImage,
-    description,
-  } = service;
+  const { instructorName, serviceImg, title, instructorImage, description } =
+    service;
 
   return (
     <div className="card w-96 bg-base-100 shadow-xl mx-auto">
