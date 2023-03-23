@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Image.css";
 
 const Service = ({ service }) => {
-  const { instructorName, serviceImg, title, instructorImage, description } =
-    service;
+  const {
+    id,
+    instructorName,
+    serviceImg,
+    title,
+    instructorImage,
+    description,
+  } = service;
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   const handleClick = () => {
@@ -37,7 +44,9 @@ const Service = ({ service }) => {
           <p className="ml-2">{instructorName}</p>
         </div>
         <div className="text-center">
-          <button className="btn btn-secondary">View Details</button>
+          <Link to={`/services/${id}`}>
+            <button className="btn btn-secondary">View Details</button>
+          </Link>
         </div>
       </div>
     </div>
