@@ -11,22 +11,33 @@ function SignUpPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser, update } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     createUser(email, password)
       .then((result) => {
         const user = result.user;
+        userUpdate(firstName, lastName, photoURL);
         console.log(user);
         setFirstName("");
         setLastName("");
         setEmail("");
         setPassword("");
+        setPhotoURL("");
       })
       .catch((err) => setError(err.message));
   };
 
+  const userUpdate = (firstName, lastName, photoURL) => {
+    const profile = {
+      displayName: `${firstName} ${lastName}`,
+      photoURL,
+    };
+    update(profile)
+      .then(() => console.log("user updated"))
+      .catch((err) => console.error(err));
+  };
   return (
     <div>
       <Navbar />
