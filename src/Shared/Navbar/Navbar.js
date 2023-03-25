@@ -66,6 +66,18 @@ const Navbar = () => {
               </Link>
               {user ? (
                 <>
+                  <Link
+                    to="/my-reviews"
+                    className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    My Reviews
+                  </Link>
+                  <Link
+                    to="/add-service"
+                    className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Add Service
+                  </Link>
                   <button
                     onClick={handleLogout}
                     className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
