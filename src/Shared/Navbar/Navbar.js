@@ -7,7 +7,10 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
+  const handleLogout = () => {
+    logout().then().catch();
+  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -62,7 +65,10 @@ const Navbar = () => {
                 Contact
               </Link>
               {user ? (
-                <button className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                <button
+                  onClick={handleLogout}
+                  className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                >
                   Sign Out
                 </button>
               ) : (
