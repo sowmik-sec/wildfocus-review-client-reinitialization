@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import Review from "../../Review/Review";
 import Navbar from "../../Shared/Navbar/Navbar";
 
 const ServiceDetails = () => {
@@ -8,7 +9,7 @@ const ServiceDetails = () => {
   return (
     <div>
       <Navbar />
-      <div className="w-1/2 mx-auto">
+      <div className="w-1/2 mx-auto p-3 my-4  border border-slate-500">
         <img src={serviceImg} alt="" className=" h-auto" />
         <h3 className="text-3xl">{title}</h3>
         <div className="flex items-center">
@@ -21,6 +22,7 @@ const ServiceDetails = () => {
         </div>
         <p className="">{description}</p>
       </div>
+      <Review />
     </div>
   );
 };
