@@ -64,6 +64,9 @@ const Navbar = () => {
               >
                 Register
               </Link>
+              <button className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                Sign Out
+              </button>
             </div>
           </div>
         </div>
