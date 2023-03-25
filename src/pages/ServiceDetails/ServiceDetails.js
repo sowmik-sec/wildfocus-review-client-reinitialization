@@ -17,6 +17,7 @@ const ServiceDetails = () => {
 
   const { displayName, photoURL, email } = user;
   const data = {
+    serviceId: _id,
     review,
     displayName,
     photoURL,
@@ -30,7 +31,7 @@ const ServiceDetails = () => {
   };
 
   const sendReviewToServer = () => {
-    fetch(`http://localhost:5000/review/${_id}`, {
+    fetch(`http://localhost:5000/review`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
