@@ -8,6 +8,7 @@ function SignUpPage() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const { createUser } = useContext(AuthContext);
 
@@ -22,7 +23,7 @@ function SignUpPage() {
         setEmail("");
         setPassword("");
       })
-      .catch((err) => console.err(err));
+      .catch((err) => setError(err.message));
   };
 
   return (
@@ -78,6 +79,7 @@ function SignUpPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <p className="mt-2 text-sm text-red-600">{error}</p>
             <button
               type="submit"
               className="bg-indigo-600 py-2 px-4 text-white font-bold rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
