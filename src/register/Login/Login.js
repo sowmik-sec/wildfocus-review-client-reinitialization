@@ -16,6 +16,8 @@ function Login() {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setEmail("");
+        setPassword("");
       })
       .catch((err) => {
         setError(err.message);
