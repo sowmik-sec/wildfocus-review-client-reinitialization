@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Navbar from "../../Shared/Navbar/Navbar";
 
 function SignUpPage() {
@@ -8,11 +9,16 @@ function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { createUser } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      `Submitted first name: ${firstName}, last name: ${lastName}, email: ${email}, password: ${password}`
-    );
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.err(err));
   };
 
   return (
