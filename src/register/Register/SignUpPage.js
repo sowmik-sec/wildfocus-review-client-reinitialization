@@ -6,6 +6,7 @@ import Navbar from "../../Shared/Navbar/Navbar";
 function SignUpPage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -29,7 +30,7 @@ function SignUpPage() {
   return (
     <div>
       <Navbar />
-      <div className="bg-gray-100 h-screen flex flex-col justify-center items-center">
+      <div className="bg-gray-100 h-auto flex flex-col justify-center items-center">
         <div className="bg-white p-10 rounded-lg shadow-md">
           <h2 className="text-3xl text-center mb-8 font-bold text-gray-700">
             Create an Account
@@ -55,6 +56,17 @@ function SignUpPage() {
               className="py-2 px-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+            <label htmlFor="photoURL" className="text-gray-700 font-bold mb-2">
+              Photo URL
+            </label>
+            <input
+              type="text"
+              id="photoURL"
+              className="py-2 px-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+              value={photoURL}
+              onChange={(e) => setPhotoURL(e.target.value)}
               required
             />
             <label htmlFor="email" className="text-gray-700 font-bold mb-2">
