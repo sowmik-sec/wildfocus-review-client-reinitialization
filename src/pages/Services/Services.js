@@ -11,7 +11,7 @@ const Services = () => {
       <Navbar />
       <div className="grid gap-6 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-6">
         {services.map((service) => (
-          <Service key={service.id} service={service} />
+          <Service key={service._id} service={service} />
         ))}
       </div>
       <Footer />

@@ -4,7 +4,7 @@ import "./Image.css";
 
 const Service = ({ service }) => {
   const {
-    id,
+    _id,
     instructorName,
     serviceImg,
     title,
@@ -44,7 +44,7 @@ const Service = ({ service }) => {
           <p className="ml-2">{instructorName}</p>
         </div>
         <div className="text-center">
-          <Link to={`/services/${id}`}>
+          <Link to={`/services/${_id}`}>
             <button className="btn btn-secondary">View Details</button>
           </Link>
         </div>
