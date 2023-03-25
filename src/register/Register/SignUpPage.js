@@ -17,6 +17,10 @@ function SignUpPage() {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPassword("");
       })
       .catch((err) => console.err(err));
   };
