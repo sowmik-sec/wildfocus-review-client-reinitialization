@@ -65,12 +65,20 @@ const Navbar = () => {
                 Contact
               </Link>
               {user ? (
-                <button
-                  onClick={handleLogout}
-                  className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Sign Out
-                </button>
+                <>
+                  <button
+                    onClick={handleLogout}
+                    className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Sign Out
+                  </button>
+                  <img
+                    className="rounded-full h-10 w-10"
+                    src={user.photoURL}
+                    title={user.displayName}
+                    alt=""
+                  />
+                </>
               ) : (
                 <Link
                   to="/register"
