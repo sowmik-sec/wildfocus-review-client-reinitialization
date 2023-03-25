@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { user } = useContext(AuthContext);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -58,15 +61,18 @@ const Navbar = () => {
               >
                 Contact
               </Link>
-              <Link
-                to="/register"
-                className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Register
-              </Link>
-              <button className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
-                Sign Out
-              </button>
+              {user ? (
+                <button className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                  Sign Out
+                </button>
+              ) : (
+                <Link
+                  to="/register"
+                  className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Register
+                </Link>
+              )}
             </div>
           </div>
         </div>
