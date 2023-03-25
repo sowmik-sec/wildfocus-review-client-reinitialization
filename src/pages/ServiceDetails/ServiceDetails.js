@@ -16,8 +16,13 @@ const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const [review, setReview] = useState("");
   const [userReview, setUserReview] = useState([]);
+  let displayName, photoURL, email;
+  if (user) {
+    displayName = user.displayName;
+    photoURL = user.photoURL;
+    email = user.email;
+  }
 
-  const { displayName, photoURL, email } = user;
   const data = {
     serviceId: _id,
     review,
@@ -91,15 +96,15 @@ const ServiceDetails = () => {
               className="py-2 px-3 w-full rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
               placeholder="Add Review..."
             />
-            {userReview.map((review) => (
-              <Review key={review._id} rev={review} />
-            ))}
           </>
         ) : (
           <>
             <h3 className="text-3xl">Please login to add a review</h3>
           </>
         )}
+        {userReview.map((review) => (
+          <Review key={review._id} rev={review} />
+        ))}
       </div>
     </div>
   );
