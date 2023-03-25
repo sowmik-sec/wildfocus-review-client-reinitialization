@@ -11,7 +11,7 @@ function SignUpPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { createUser, update } = useContext(AuthContext);
+  const { createUser, update, googleSignIn } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,6 +27,15 @@ function SignUpPage() {
         setPhotoURL("");
       })
       .catch((err) => setError(err.message));
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.log(err));
   };
 
   const userUpdate = (firstName, lastName, photoURL) => {
@@ -119,6 +128,13 @@ function SignUpPage() {
               Log In
             </Link>
           </p>
+          <button
+            type="submit"
+            onClick={handleGoogleSignIn}
+            className="bg-indigo-600 py-2 px-4 w-full mt-3 text-white font-bold rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
+          >
+            Sign in with Google
+          </button>
         </div>
       </div>
     </div>
