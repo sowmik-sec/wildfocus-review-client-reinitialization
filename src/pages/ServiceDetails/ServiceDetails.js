@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Review from "../../Review/Review";
 import Navbar from "../../Shared/Navbar/Navbar";
 
 const ServiceDetails = () => {
@@ -14,6 +15,7 @@ const ServiceDetails = () => {
   } = useLoaderData();
   const { user } = useContext(AuthContext);
   const [review, setReview] = useState("");
+  const [userReview, setUserReview] = useState([]);
 
   const { displayName, photoURL, email } = user;
   const data = {
@@ -27,8 +29,18 @@ const ServiceDetails = () => {
     event.preventDefault();
     console.log(review);
     sendReviewToServer();
+    setUserReview([...userReview, data]);
     setReview("");
   };
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/review/${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUserReview(data);
+        console.log(data);
+      });
+  }, [_id]);
 
   const sendReviewToServer = () => {
     fetch(`http://localhost:5000/review`, {
@@ -39,8 +51,8 @@ const ServiceDetails = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then((daata) => {
+        console.log(daata);
       })
       .catch((err) => console.error(err));
   };
@@ -79,6 +91,9 @@ const ServiceDetails = () => {
               className="py-2 px-3 w-full rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
               placeholder="Add Review..."
             />
+            {userReview.map((review) => (
+              <Review key={review._id} rev={review} />
+            ))}
           </>
         ) : (
           <>
