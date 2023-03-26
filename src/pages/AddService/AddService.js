@@ -1,14 +1,39 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Navbar from "../../Shared/Navbar/Navbar";
 
 function SubmitForm() {
   const [serviceImg, setServiceImg] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const { user } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your form submission logic here
+    sendServiceToServer();
+  };
+
+  const data = {
+    instructorName: user.displayName,
+    serviceImg,
+    title,
+    instructorImage: user.photoURL,
+    description,
+  };
+
+  const sendServiceToServer = () => {
+    fetch(`http://localhost:5000/services`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
