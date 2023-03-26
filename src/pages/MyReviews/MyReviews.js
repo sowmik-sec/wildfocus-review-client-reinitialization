@@ -1,6 +1,9 @@
+import { faPen, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Navbar from "../../Shared/Navbar/Navbar";
+import "./MyReviews.css";
 
 const MyReviews = () => {
   const { user } = useContext(AuthContext);
@@ -15,7 +18,42 @@ const MyReviews = () => {
   return (
     <div>
       <Navbar />
-      <h1>this are my reviews</h1>
+      <div className="">
+        <table className="table table-zebra w-full">
+          {/* head */}
+          <thead>
+            <tr>
+              <th></th>
+              <th>Service Name</th>
+              <th>Review</th>
+              <th>Review Time</th>
+              <th>Operation</th>
+            </tr>
+          </thead>
+
+          {reviews.map((rev, index) => {
+            const { serviceName, review, timestamp } = rev;
+            return (
+              <tbody key={index}>
+                <tr className="border">
+                  <th>{index + 1}</th>
+                  <td>{serviceName}</td>
+                  <td className="wrap-text">{review}</td>
+                  <td>{timestamp}</td>
+                  <td>
+                    <FontAwesomeIcon icon={faPen} title="Edit Review" />
+                    <FontAwesomeIcon
+                      icon={faTrashCan}
+                      className="ml-3"
+                      title="Delete Review"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            );
+          })}
+        </table>
+      </div>
     </div>
   );
 };
