@@ -18,7 +18,6 @@ function SubmitForm() {
     setServiceImg("");
     setTitle("");
     setDescription("");
-    navigate(from, { replace: true });
   };
 
   const data = {
@@ -40,6 +39,8 @@ function SubmitForm() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        alert("New Service added");
+        navigate(from, { replace: true });
       })
       .catch((err) => console.error(err));
   };
