@@ -25,6 +25,7 @@ const ServiceDetails = () => {
 
   const data = {
     serviceId: _id,
+    serviceName: title,
     review,
     displayName,
     photoURL,
@@ -103,7 +104,7 @@ const ServiceDetails = () => {
           </>
         )}
         {userReview.map((review) => (
-          <Review key={review._id} rev={review} />
+          <Review key={review.review} rev={review} />
         ))}
       </div>
     </div>
