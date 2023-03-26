@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Navbar from "../../Shared/Navbar/Navbar";
 
@@ -7,6 +7,9 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const { login, googleSignIn } = useContext(AuthContext);
 
@@ -16,6 +19,7 @@ function Login() {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
         setEmail("");
         setPassword("");
       })
