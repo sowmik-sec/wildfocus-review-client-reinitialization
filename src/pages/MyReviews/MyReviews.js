@@ -34,43 +34,53 @@ const MyReviews = () => {
   return (
     <div>
       <Navbar />
-      <div className="">
-        <table className="table table-zebra w-full">
-          {/* head */}
-          <thead>
-            <tr>
-              <th></th>
-              <th>Service Name</th>
-              <th>Review</th>
-              <th>Review Time</th>
-              <th>Operation</th>
-            </tr>
-          </thead>
-
-          {reviews.map((rev, index) => {
-            const { _id, serviceName, review, timestamp } = rev;
-            return (
-              <tbody key={index}>
-                <tr className="border">
-                  <th>{index + 1}</th>
-                  <td>{serviceName}</td>
-                  <td className="wrap-text">{review}</td>
-                  <td>{timestamp}</td>
-                  <td>
-                    <FontAwesomeIcon icon={faPen} title="Edit Review" />
-                    <FontAwesomeIcon
-                      icon={faTrashCan}
-                      className="ml-3"
-                      title="Delete Review"
-                      onClick={() => handleDelete(_id)}
-                    />
-                  </td>
+      {reviews.length > 0 ? (
+        <>
+          <div className="">
+            <table className="table table-zebra w-full">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Service Name</th>
+                  <th>Review</th>
+                  <th>Review Time</th>
+                  <th>Operation</th>
                 </tr>
-              </tbody>
-            );
-          })}
-        </table>
-      </div>
+              </thead>
+
+              {reviews.map((rev, index) => {
+                const { _id, serviceName, review, timestamp } = rev;
+                return (
+                  <tbody key={index}>
+                    <tr className="border">
+                      <th>{index + 1}</th>
+                      <td>{serviceName}</td>
+                      <td className="wrap-text">{review}</td>
+                      <td>{timestamp}</td>
+                      <td>
+                        <FontAwesomeIcon icon={faPen} title="Edit Review" />
+                        <FontAwesomeIcon
+                          icon={faTrashCan}
+                          className="ml-3"
+                          title="Delete Review"
+                          onClick={() => handleDelete(_id)}
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                );
+              })}
+            </table>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="flex items-center justify-center h-screen">
+            <h1 className="text-5xl font-bold">No reviews were added</h1>
+          </div>
+        </>
+      )}
     </div>
   );
 };
