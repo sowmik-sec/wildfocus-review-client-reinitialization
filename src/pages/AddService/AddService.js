@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Navbar from "../../Shared/Navbar/Navbar";
 
@@ -7,10 +8,17 @@ function SubmitForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
     sendServiceToServer();
+    setServiceImg("");
+    setTitle("");
+    setDescription("");
+    navigate(from, { replace: true });
   };
 
   const data = {
