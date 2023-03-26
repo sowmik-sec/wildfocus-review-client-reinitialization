@@ -14,7 +14,23 @@ const MyReviews = () => {
       .then((data) => setReviews(data))
       .catch((err) => console.error(err));
   }, [user.email]);
-  console.log(reviews);
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Do you want to delete this review?");
+    if (proceed) {
+      fetch(`http://localhost:5000/review/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            alert("Review deleted Successfully");
+            const remaining = reviews.filter((rev) => rev._id !== id);
+            setReviews(remaining);
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  };
   return (
     <div>
       <Navbar />
@@ -32,7 +48,7 @@ const MyReviews = () => {
           </thead>
 
           {reviews.map((rev, index) => {
-            const { serviceName, review, timestamp } = rev;
+            const { _id, serviceName, review, timestamp } = rev;
             return (
               <tbody key={index}>
                 <tr className="border">
@@ -46,6 +62,7 @@ const MyReviews = () => {
                       icon={faTrashCan}
                       className="ml-3"
                       title="Delete Review"
+                      onClick={() => handleDelete(_id)}
                     />
                   </td>
                 </tr>
