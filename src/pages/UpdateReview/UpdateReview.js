@@ -18,7 +18,7 @@ const UpdateReview = () => {
       photoURL,
       serviceId,
     };
-    fetch(`http://localhost:5000/review-update/${_id}`, {
+    fetch(`https://wildfocus-review-server.vercel.app/review-update/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

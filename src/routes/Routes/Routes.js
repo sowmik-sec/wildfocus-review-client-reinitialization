@@ -20,13 +20,13 @@ export const routes = createBrowserRouter([
   {
     path: "/services",
     element: <Services />,
-    loader: () => fetch("http://localhost:5000/services"),
+    loader: () => fetch("https://wildfocus-review-server.vercel.app/services"),
   },
   {
     path: "/services/:id",
     element: <ServiceDetails />,
     loader: ({ params }) =>
-      fetch(`http://localhost:5000/services/${params.id}`),
+      fetch(`https://wildfocus-review-server.vercel.app/services/${params.id}`),
   },
   {
     path: "/register",
@@ -60,7 +60,9 @@ export const routes = createBrowserRouter([
       </PrivateRoute>
     ),
     loader: ({ params }) =>
-      fetch(`http://localhost:5000/review-single/${params.id}`),
+      fetch(
+        `https://wildfocus-review-server.vercel.app/review-single/${params.id}`
+      ),
   },
   {
     path: "*",

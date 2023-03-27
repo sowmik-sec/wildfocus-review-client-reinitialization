@@ -5,7 +5,7 @@ import Service from "./Service";
 const FeaturedServices = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/services-3")
+    fetch("https://wildfocus-review-server.vercel.app/services-3")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);

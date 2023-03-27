@@ -40,7 +40,7 @@ const ServiceDetails = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/review/${_id}`)
+    fetch(`https://wildfocus-review-server.vercel.app/review/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         setUserReview(data);
@@ -49,7 +49,7 @@ const ServiceDetails = () => {
   }, [_id]);
 
   const sendReviewToServer = () => {
-    fetch(`http://localhost:5000/review`, {
+    fetch(`https://wildfocus-review-server.vercel.app/review`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

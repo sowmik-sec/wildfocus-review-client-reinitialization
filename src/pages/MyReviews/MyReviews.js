@@ -10,7 +10,9 @@ const MyReviews = () => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/my-review?email=${user.email}`)
+    fetch(
+      `https://wildfocus-review-server.vercel.app/my-review?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setReviews(data))
       .catch((err) => console.error(err));
@@ -18,7 +20,7 @@ const MyReviews = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Do you want to delete this review?");
     if (proceed) {
-      fetch(`http://localhost:5000/review/${id}`, {
+      fetch(`https://wildfocus-review-server.vercel.app/review/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
