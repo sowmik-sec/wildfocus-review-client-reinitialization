@@ -35,7 +35,7 @@ function Login() {
       })
       .catch((err) => console.log(err));
   };
-
+  document.title = "Login";
   return (
     <div>
       <Navbar />

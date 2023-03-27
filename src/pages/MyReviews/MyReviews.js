@@ -32,7 +32,7 @@ const MyReviews = () => {
         .catch((err) => console.error(err));
     }
   };
-
+  document.title = "My Reviews";
   return (
     <div>
       <Navbar />

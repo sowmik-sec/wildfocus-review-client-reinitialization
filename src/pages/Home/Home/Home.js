@@ -5,6 +5,7 @@ import FeaturedServices from "../FeaturedServices/FeaturedServices";
 import Instructor from "../Instructor/Instructor";
 
 const Home = () => {
+  document.title = "Home";
   return (
     <div>
       <Banner />

@@ -44,7 +44,7 @@ function SubmitForm() {
       })
       .catch((err) => console.error(err));
   };
-
+  document.title = "Add Service";
   return (
     <div>
       <Navbar />

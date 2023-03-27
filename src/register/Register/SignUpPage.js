@@ -52,6 +52,7 @@ function SignUpPage() {
       .then(() => console.log("user updated"))
       .catch((err) => console.error(err));
   };
+  document.title = "Sign Up";
   return (
     <div>
       <Navbar />

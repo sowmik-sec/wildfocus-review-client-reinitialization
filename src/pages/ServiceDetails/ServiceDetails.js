@@ -66,6 +66,7 @@ const ServiceDetails = () => {
   const handleInputChange = (event) => {
     setReview(event.target.value);
   };
+  document.title = "Service Details";
   return (
     <div>
       <Navbar />

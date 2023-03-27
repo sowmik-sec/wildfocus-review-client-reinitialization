@@ -6,6 +6,7 @@ import Service from "../Home/FeaturedServices/Service";
 
 const Services = () => {
   const services = useLoaderData();
+  document.title = "Services";
   return (
     <div>
       <Navbar />
